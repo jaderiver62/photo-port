@@ -3,7 +3,9 @@ import Modal from '../Modal';
 
 const PhotoList = ({ category }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentPhoto, setCurrentPhoto] = useState();  const [photos] = useState([
+  const [currentPhoto, setCurrentPhoto] = useState();
+
+  const [photos] = useState([
     {
       name: 'Grocery aisle',
       category: 'commercial',
@@ -105,8 +107,10 @@ const PhotoList = ({ category }) => {
 
   const toggleModal = (image, i) => {
     setCurrentPhoto({ ...image, index: i });
-  }
-   return (
+    setIsModalOpen(!isModalOpen);
+  };
+
+  return (
     <div>
       {isModalOpen && <Modal onClose={toggleModal} currentPhoto={currentPhoto} />}
       <div className="flex-row">
@@ -123,6 +127,5 @@ const PhotoList = ({ category }) => {
     </div>
   );
 };
-
 
 export default PhotoList;
